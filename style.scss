@@ -28,6 +28,7 @@ body {
       padding: 5px auto;
       margin: 10px auto;
       font-size: 24px;
+      font-family: 'Bitter', serif;
     }
     .list-item-task {
       display: flex;
@@ -39,8 +40,9 @@ body {
         outline: none;
         border-radius: 5px 1px 5px 1px;
         width: 80%;
-        .list-item-task-input:focus {
-          background-color: rgb(226, 165, 65);
+        margin-left: 7px;
+        &:focus {
+          background-color: rgb(252, 224, 102);
         }
       }
       .list-item-task-btn {
@@ -49,13 +51,22 @@ body {
         border-radius: 10px;
         margin: 3px 5px;
       }
-      .list-item-task-btnx {
-        padding: 0 7px;
-        border-radius: 5px;
-        text-decoration: none;
-        background-color: rgb(228, 84, 84);
-        color: white;
-      }
+    }
+    .list-item-total {
+      text-align: right;
+      color: white;
+      font-family: 'Bitter', serif;
+      font-size: 20px;
+
+      margin: 0 auto;
     }
   }
+}
+
+.list-item-task-btnx {
+  padding: 0 7px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: rgb(228, 84, 84);
+  color: white;
 }

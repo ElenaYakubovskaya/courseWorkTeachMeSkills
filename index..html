@@ -23,11 +23,47 @@
       <div class="list-item">
         <h3 class="list-item-title">To Do</h3>
         <div class="list-item-task">
-          <input class="list-item-task-input" id="inputToDo" type="text" />
-          <button class="list-item-task-btn" id="toDoBtn">ADD</button>
+          <form class="list-item-task-form">
+            <input
+              tabindex="1"
+              placeholder="task"
+              class="list-item-task-form-input"
+              id="inputToDo"
+              type="text"
+            />
+
+            <textarea
+              class="list-item-task-form-textArea"
+              name="description"
+              tabindex="2"
+              id=""
+              cols="30"
+              rows="5"
+              placeholder="description"
+            ></textarea>
+            <input
+              type="date"
+              class="list-item-task-form-data"
+              name=""
+              tabindex="3"
+              id="3"
+            />
+            <input
+              type="text"
+              tabindex="4"
+              placeholder="user name"
+              class="list-item-task-form-user"
+            />
+            <button class="list-item-task-form-btn" id="toDoBtn" tabindex="5">
+              ADD
+            </button>
+          </form>
         </div>
         <ul class="list-item-task-add">
-          <li class="list-item-task-addLi">Task is here</li>
+          <li class="list-item-task-addLi">
+            <h3 class="list-item-task-addLi-ready">Task is here</h3>
+            <button class="list-item-task-addLi-btnDel">X</button>
+          </li>
         </ul>
         <div class="list-item-total">total tasks: 0</div>
       </div>

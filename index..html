@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Bitter:wght@100;600&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -23,33 +24,26 @@
         <h3 class="list-item-title">To Do</h3>
         <div class="list-item-task">
           <input class="list-item-task-input" id="inputToDo" type="text" />
-          <button class="list-item-task-btn" type="submit">ADD</button>
+          <button class="list-item-task-btn" id="toDoBtn">ADD</button>
         </div>
-        <ul class="list-item-task-add"></ul>
+        <ul class="list-item-task-add">
+          <li class="list-item-task-addLi">Task is here</li>
+        </ul>
         <div class="list-item-total">total tasks: 0</div>
       </div>
       <div class="list-item">
         <h3 class="list-item-title">In Progress</h3>
-        <div class="list-item-task">
-          <input
-            class="list-item-task-input"
-            id="inputInProgress"
-            type="text"
-          />
-          <button class="list-item-task-btn" type="submit">ADD</button>
-        </div>
-        <ul class="list-item-task-add"></ul>
-        <div class="list-item-total">total tasks: 0</div>
+        <div class="list-item-task"></div>
+        <ul id="ulInProgress" class="list-item-task-add"></ul>
+        <div id="totalCenter" class="list-item-total">total tasks: 0</div>
       </div>
       <div class="list-item">
         <h3 class="list-item-title">Done</h3>
-        <div class="list-item-task">
-          <input class="list-item-task-input" id="inputDone" type="text" />
-          <button class="list-item-task-btn" type="submit">ADD</button>
-        </div>
-        <ul class="list-item-task-add"></ul>
-        <div class="list-item-total">total tasks: 0</div>
+        <div class="list-item-task"></div>
+        <ul id="ulDOne" class="list-item-task-add"></ul>
+        <div id="totalCenter" class="list-item-total">total tasks: 0</div>
       </div>
     </main>
+    <script src="main.js"></script>
   </body>
 </html>

@@ -139,11 +139,33 @@ body {
     margin: 0 auto;
     text-align: left;
   }
+  .list-item-task-addLi-btnEdit {
+    border: 1px solid;
+    margin: 3px;
+    padding: 0 3px;
+    border-radius: 10px;
+    background-color: white;
+    &:hover {
+      background-color: rgb(255, 251, 149);
+    }
+    &:focus {
+      background-color: yellow;
+    }
+  }
   .list-item-task-addLi-btnDel {
-    background-color: rgb(255, 122, 122);
+    font-size: 22px;
+    background-color: rgb(245, 170, 170);
     text-align: right;
-    border-radius: 15px;
-    border: inherit;
+    border: 1px solid;
+    margin: 3px;
+    padding: 1px 4px;
+    border-radius: 10px;
+    &:hover {
+      background-color: rgb(255, 106, 106);
+    }
+    &:focus {
+      background-color: rgb(238, 17, 17);
+    }
   }
 }
 

@@ -171,11 +171,38 @@ body {
   text-align: left;
 }
 
+.list-item-task-addLi .list-item-task-addLi-btnEdit {
+  border: 1px solid;
+  margin: 3px;
+  padding: 0 3px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.list-item-task-addLi .list-item-task-addLi-btnEdit:hover {
+  background-color: #fffb95;
+}
+
+.list-item-task-addLi .list-item-task-addLi-btnEdit:focus {
+  background-color: yellow;
+}
+
 .list-item-task-addLi .list-item-task-addLi-btnDel {
-  background-color: #ff7a7a;
+  font-size: 22px;
+  background-color: #f5aaaa;
   text-align: right;
-  border-radius: 15px;
-  border: inherit;
+  border: 1px solid;
+  margin: 3px;
+  padding: 1px 4px;
+  border-radius: 10px;
+}
+
+.list-item-task-addLi .list-item-task-addLi-btnDel:hover {
+  background-color: #ff6a6a;
+}
+
+.list-item-task-addLi .list-item-task-addLi-btnDel:focus {
+  background-color: #ee1111;
 }
 
 .list-item-task-btnDel {

@@ -36,7 +36,7 @@
               class="list-item-task-form-textArea"
               name="description"
               tabindex="2"
-              id=""
+              id="description"
               cols="30"
               rows="5"
               placeholder="description"
@@ -46,13 +46,14 @@
               class="list-item-task-form-data"
               name=""
               tabindex="3"
-              id="3"
+              id="date"
             />
             <input
               type="text"
               tabindex="4"
               placeholder="user name"
               class="list-item-task-form-user"
+              id="taskUser"
             />
             <button class="list-item-task-form-btn" id="toDoBtn" tabindex="5">
               ADD
@@ -62,6 +63,12 @@
         <ul class="list-item-task-add">
           <li class="list-item-task-addLi">
             <h3 class="list-item-task-addLi-ready">Task is here</h3>
+            <button class="list-item-task-addLi-btnEdit">
+              <i
+                ><img
+                  src="https://img.icons8.com/material-outlined/20/000000/edit--v3.png"
+              /></i>
+            </button>
             <button class="list-item-task-addLi-btnDel">X</button>
           </li>
         </ul>
@@ -80,6 +87,7 @@
         <div id="totalCenter" class="list-item-total">total tasks: 0</div>
       </div>
     </main>
+
     <script src="main.js"></script>
   </body>
 </html>

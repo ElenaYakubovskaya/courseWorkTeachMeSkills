@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+d<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,75 +19,72 @@
     <header class="header">
       <h1>My ToDo LiSt</h1>
     </header>
-    <main class="list">
-      <div class="list-item">
-        <h3 class="list-item-title">To Do</h3>
-        <div class="list-item-task">
-          <form class="list-item-task-form">
-            <input
-              tabindex="1"
-              placeholder="task"
-              class="list-item-task-form-input"
-              id="inputToDo"
-              type="text"
-            />
+    <div class="container">
+      <main class="list">
+        <div class="list-item">
+          <h3 class="list-item-title">To Do</h3>
+          <div class="list-item-task">
+            <form class="list-item-task-form">
+              <input
+                tabindex="1"
+                placeholder="what need to do?"
+                class="list-item-task-form-input"
+                id="inputToDo"
+                type="text"
+                name="nameTask"
+              />
 
-            <textarea
-              class="list-item-task-form-textArea"
-              name="description"
-              tabindex="2"
-              id="description"
-              cols="30"
-              rows="5"
-              placeholder="description"
-            ></textarea>
-            <input
-              type="date"
-              class="list-item-task-form-data"
-              name=""
-              tabindex="3"
-              id="date"
-            />
-            <input
-              type="text"
-              tabindex="4"
-              placeholder="user name"
-              class="list-item-task-form-user"
-              id="taskUser"
-            />
-            <button class="list-item-task-form-btn" id="toDoBtn" tabindex="5">
-              ADD
-            </button>
-          </form>
+              <textarea
+                class="list-item-task-form-textArea"
+                name="description"
+                tabindex="2"
+                id="description"
+                cols="30"
+                rows="5"
+                placeholder="description"
+              ></textarea>
+              <input
+                type="date"
+                class="list-item-task-form-data"
+                name="date"
+                tabindex="3"
+                id="date"
+              />
+              <input
+                type="text"
+                tabindex="4"
+                placeholder="user name"
+                class="list-item-task-form-user"
+                id="userTask"
+                name="user name"
+              />
+              <button
+                class="list-item-task-form-btn"
+                id="toDoBtn"
+                tabindex="5"
+                name="ADD"
+              >
+                ADD
+              </button>
+            </form>
+          </div>
+          <div id="todosWrapper" class="list-item-task-add"></div>
+          <div class="list-item-total">total tasks: 0</div>
         </div>
-        <ul class="list-item-task-add">
-          <li class="list-item-task-addLi">
-            <h3 class="list-item-task-addLi-ready">Task is here</h3>
-            <button class="list-item-task-addLi-btnEdit">
-              <i
-                ><img
-                  src="https://img.icons8.com/material-outlined/20/000000/edit--v3.png"
-              /></i>
-            </button>
-            <button class="list-item-task-addLi-btnDel">X</button>
-          </li>
-        </ul>
-        <div class="list-item-total">total tasks: 0</div>
-      </div>
-      <div class="list-item">
-        <h3 class="list-item-title">In Progress</h3>
-        <div class="list-item-task"></div>
-        <ul id="ulInProgress" class="list-item-task-add"></ul>
-        <div id="totalCenter" class="list-item-total">total tasks: 0</div>
-      </div>
-      <div class="list-item">
-        <h3 class="list-item-title">Done</h3>
-        <div class="list-item-task"></div>
-        <ul id="ulDOne" class="list-item-task-add"></ul>
-        <div id="totalCenter" class="list-item-total">total tasks: 0</div>
-      </div>
-    </main>
-
-    <script src="main.js"></script>
+        <div class="list-item">
+          <h3 class="list-item-title">In Progress</h3>
+          <div class="list-item-task"></div>
+          <ul id="ulInProgress" class="list-item-task-add"></ul>
+          <div id="totalCenter" class="list-item-total">total tasks: 0</div>
+        </div>
+        <div class="list-item">
+          <h3 class="list-item-title">Done</h3>
+          <div class="list-item-task"></div>
+          <ul id="ulDOne" class="list-item-task-add"></ul>
+          <div id="totalCenter" class="list-item-total">total tasks: 0</div>
+        </div>
+      </main>
+      <script src="main.js"></script>
+    </div>
   </body>
 </html>

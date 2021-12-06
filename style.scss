@@ -3,7 +3,7 @@
   background-size: cover;
 }
 .container {
-  max-width: 1300px;
+  max-width: 1400px;
   background-color: rgba(167, 167, 167, 0.9);
   margin: 0 auto;
 }
@@ -21,7 +21,7 @@
   box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 
   .list-item {
-    width: 350px;
+    width: 100%;
     margin: 0;
     border: 3px solid white;
     border-radius: 4px;
@@ -49,12 +49,13 @@
         padding-bottom: 10px;
         border-radius: 20px;
         .list-item-task-form-input {
+          display: block;
           border: 3px solid gray;
           box-shadow: 3px rgb(167, 167, 151);
           outline: none;
           border-radius: 15px 1px 15px 1px;
-          width: 70%;
-          margin: 7px 45px;
+          width: 80%;
+          margin: 7px auto;
           font-size: 15px;
           text-align: center;
           &:focus {
@@ -62,6 +63,7 @@
           }
         }
         .list-item-task-form-textArea {
+          width: 80%;
           overflow: auto;
           resize: none;
           outline: none;
@@ -90,6 +92,7 @@
           display: block;
           margin: 0 auto;
           width: 75%;
+          cursor: pointer;
           &:hover {
             background-color: rgb(237, 237, 178);
           }
@@ -120,16 +123,6 @@
   }
 }
 
-#ulInProgress,
-#ulDOne {
-  list-style-type: none;
-  background-color: white;
-  margin: 0 auto;
-  text-align: center;
-  border: 1px solid yellow;
-  border-radius: 1px 5px 1px 5px;
-}
-
 .list-item-task-add-all {
   display: flex;
   flex-direction: column;
@@ -140,13 +133,13 @@
 .list-item-task-add-description {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 95%;
   list-style-type: none;
   background-color: white;
   list-style-position: inside;
-  margin: 0 auto;
+  margin: 3px auto;
   text-align: center;
-  border: 1px solid yellow;
+  border: 3px double purple;
   border-radius: 1px 5px 1px 5px;
 
   text-shadow: none;
@@ -156,20 +149,39 @@
   flex-direction: row;
 }
 
-#btn-complete {
+#btn-inPr,
+#btn-return,
+#btn-inDone {
   text-align: right;
-  margin: 2px;
   text-decoration: none;
-  zoom: 1.7;
+  background-color: rgb(212, 244, 255);
   display: block;
-  margin: auto 1px;
+  height: 22px;
+  white-space: nowrap;
+  margin: auto 4px;
+  cursor: pointer;
 }
 #btn-delete {
-  margin-left: 3px;
   height: 22px;
-  margin: auto 1px;
+  margin: auto 3px;
   border-radius: 6px;
   text-decoration: none;
   background-color: rgb(228, 84, 84);
   color: white;
+  cursor: pointer;
+}
+
+.list-item-task-clear {
+  text-align: right;
+  text-shadow: none;
+  padding: 3px;
+  font-size: 18px;
+}
+.list-item-task-clear:hover {
+  text-decoration: underline;
+  font-size: 21px;
+  padding: 1px;
+  color: red;
+  transition: 0.5s;
+  cursor: pointer;
 }

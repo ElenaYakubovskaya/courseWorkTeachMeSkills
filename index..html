@@ -1,4 +1,4 @@
-d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -68,23 +68,33 @@ d<!DOCTYPE html>
               </button>
             </form>
           </div>
+          <div id="clearAllListToDo" class="list-item-task-clear">
+            clear all list
+          </div>
           <div id="todosWrapper" class="list-item-task-add"></div>
           <div class="list-item-total">total tasks: 0</div>
         </div>
         <div class="list-item">
           <h3 class="list-item-title">In Progress</h3>
           <div class="list-item-task"></div>
-          <ul id="ulInProgress" class="list-item-task-add"></ul>
+          <div id="clearAllListInPr" class="list-item-task-clear">
+            clear all list
+          </div>
+          <div id="inProgressWrapper" class="list-item-task-add"></div>
           <div id="totalCenter" class="list-item-total">total tasks: 0</div>
         </div>
         <div class="list-item">
           <h3 class="list-item-title">Done</h3>
           <div class="list-item-task"></div>
-          <ul id="ulDOne" class="list-item-task-add"></ul>
+          <div id="clearAllListDone" class="list-item-task-clear">
+            clear all list
+          </div>
+          <div id="doneWrapper" class="list-item-task-add"></div>
           <div id="totalCenter" class="list-item-total">total tasks: 0</div>
         </div>
       </main>
-      <script src="main.js"></script>
+      <script src="/main.js"></script>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>

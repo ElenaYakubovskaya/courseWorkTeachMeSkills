@@ -81,7 +81,7 @@
 }
 
 .list .list-item .list-item-task .list-item-task-form .list-item-task-form-input:focus {
-  background-color: #f2f275;
+  background-color: rgba(255, 208, 122, 0.852);
 }
 
 .list .list-item .list-item-task .list-item-task-form .list-item-task-form-textArea {
@@ -101,7 +101,7 @@
 }
 
 .list .list-item .list-item-task .list-item-task-form .list-item-task-form-textArea:focus {
-  background-color: #f2f275;
+  background-color: rgba(255, 208, 122, 0.852);
 }
 
 .list .list-item .list-item-task .list-item-task-form .list-item-task-form-data {
@@ -126,7 +126,7 @@
 }
 
 .list .list-item .list-item-task .list-item-task-form .list-item-task-form-btn:focus {
-  background-color: #f2f275;
+  background-color: rgba(255, 208, 122, 0.852);
 }
 
 .list .list-item .list-item-task .list-item-task-form .list-item-task-form-user {
@@ -140,7 +140,7 @@
 }
 
 .list .list-item .list-item-task .list-item-task-form .list-item-task-form-user:focus {
-  background-color: #f2f275;
+  background-color: rgba(255, 208, 122, 0.852);
 }
 
 .list .list-item-total {
@@ -204,7 +204,9 @@
   cursor: pointer;
 }
 
-#btn-delete {
+#btn-delToDo,
+#btn-delInPr,
+#btn-delDone {
   height: 22px;
   margin: auto 3px;
   border-radius: 6px;
@@ -219,12 +221,12 @@
   text-shadow: none;
   padding: 3px;
   font-size: 18px;
+  display: none;
 }
 
 .list-item-task-clear:hover {
   text-decoration: underline;
-  font-size: 21px;
-  padding: 1px;
+  padding: 3px;
   color: red;
   -webkit-transition: 0.5s;
   transition: 0.5s;

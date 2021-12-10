@@ -59,7 +59,7 @@
           font-size: 15px;
           text-align: center;
           &:focus {
-            background-color: rgb(242, 242, 117);
+            background-color: rgba(255, 208, 122, 0.852);
           }
         }
         .list-item-task-form-textArea {
@@ -76,7 +76,7 @@
           font-size: 15px;
           font-family: 'Bitter', serif;
           &:focus {
-            background-color: rgb(242, 242, 117);
+            background-color: rgba(255, 208, 122, 0.852);
           }
         }
         .list-item-task-form-data {
@@ -97,7 +97,7 @@
             background-color: rgb(237, 237, 178);
           }
           &:focus {
-            background-color: rgb(242, 242, 117);
+            background-color: rgba(255, 208, 122, 0.852);
           }
         }
         .list-item-task-form-user {
@@ -109,7 +109,7 @@
           text-align: center;
           font-size: 15px;
           &:focus {
-            background-color: rgb(242, 242, 117);
+            background-color: rgba(255, 208, 122, 0.852);
           }
         }
       }
@@ -161,7 +161,9 @@
   margin: auto 4px;
   cursor: pointer;
 }
-#btn-delete {
+#btn-delToDo,
+#btn-delInPr,
+#btn-delDone {
   height: 22px;
   margin: auto 3px;
   border-radius: 6px;
@@ -176,11 +178,12 @@
   text-shadow: none;
   padding: 3px;
   font-size: 18px;
+  display: none;
 }
 .list-item-task-clear:hover {
   text-decoration: underline;
-  font-size: 21px;
-  padding: 1px;
+
+  padding: 3px;
   color: red;
   transition: 0.5s;
   cursor: pointer;

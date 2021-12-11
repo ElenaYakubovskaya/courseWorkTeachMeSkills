@@ -9,6 +9,10 @@ const doneWrapper = document.getElementById('doneWrapper');
 const clearAllListToDo = document.getElementById('clearAllListToDo');
 const clearAllListInPr = document.getElementById('clearAllListInPr');
 const clearAllListDone = document.getElementById('clearAllListDone');
+const editTaskToDo = document.getElementById('toDoTask');
+const totalToDo = document.getElementById('totalToDo');
+const totalInPr = document.getElementById('totalInPr');
+const totalDone = document.getElementById('totalDone');
 
 let tasksDone = !localStorage.tasksDone
   ? []
@@ -28,23 +32,33 @@ function Task(title, description, date, user) {
   this.date = date;
   this.user = user;
 }
+function showClearAll(list) {
+  list.style.display = 'block';
+}
+
+function notShowClearAll(list) {
+  list.style.display = 'none';
+}
 
 const createLi = (task, index) => {
-  showClearAllToDo();
+  showClearAll(clearAllListToDo);
   return `
-  <div id="toDoList" class="list-item-task-add-description">
+  <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
-    <strong>${task.title}</strong>
-      <i>${task.description}</i>
-      --${task.date}--${task.user}
+      <span class="list-item-task-add-all-span" >
+        <strong id="strong">${task.title}</strong>
+          ${task.description}
+         <span id="data-user">${task.date}${task.user}</span>
+      </span>
     </div>
   <div class="list-item-task-add-buttons">
-    <button onclick="inProgressTask(${index})" class="list-item-task-add-buttons-inPR"
-    id="btn-inPr"
-    >in PR</button>
-    <button onclick ="delTaskToDo(${index})"
-      class="list-item-task-add-buttons-delete"
-      id="btn-delToDo" >x
+  <div class="list-item-task-add-buttons">
+      <button onclick="inProgressTask(${index})" class="list-item-task-add-buttons-inPR"
+      id="btn-inPr"
+      >in PR</button>
+      <button onclick ="delTaskToDo(${index})"
+        class="list-item-task-add-buttons-delete"
+        id="btn-delToDo" >x
       </button>
   </div>
   </div>
@@ -52,13 +66,15 @@ const createLi = (task, index) => {
 };
 
 const createLiInProgress = (task, index) => {
-  showClearAllInPr();
+  showClearAll(clearAllListInPr);
   return `
   <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
-    <strong>${task.title}</strong>
-      <i>${task.description}</i>
-      --${task.date}--${task.user}
+      <span class="list-item-task-add-all-span" >
+        <strong id="strong">${task.title}</strong>
+          ${task.description}
+         <span id="data-user">${task.date}${task.user}</span>
+      </span>
     </div>
   <div class="list-item-task-add-buttons">
     <button onclick ="done(${index})" class="list-item-task-add-buttons-inPR"
@@ -74,14 +90,17 @@ const createLiInProgress = (task, index) => {
 };
 
 const createLiDone = (task, index) => {
-  showClearAllDone();
+  showClearAll(clearAllListDone);
   return `
   <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
-    <strong>${task.title}</strong>
-      <i>${task.description}</i>
-      --${task.date}--${task.user}
+      <span class="list-item-task-add-all-span" >
+        <strong id="strong">${task.title}</strong>
+          ${task.description}
+         <span id="data-user">${task.date}${task.user}</span>
+      </span>
     </div>
+  <div class="list-item-task-add-buttons">
   <div class="list-item-task-add-buttons">
     <button onclick ="btnReturn(${index})" class="list-item-task-add-buttons-return"
     id="btn-return"
@@ -97,10 +116,13 @@ const createLiDone = (task, index) => {
 
 const createLiReturn = (task, index) => {
   return `
-  <div class="list-item-task-add-description>
+  <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
-    <strong>${task.title}</strong>
+      <span class="list-item-task-add-all-span" >
+        <strong id="strong">${task.title}</strong>
+      </span>
     </div>
+  <div class="list-item-task-add-buttons">
   <div class="list-item-task-add-buttons">
     <button onclick ="inProgressTask(${index})" class="list-item-task-add-buttons-inPr"
     id="btn-inPr"
@@ -157,12 +179,18 @@ const updateLocalDone = () => {
 };
 
 const inProgressTask = (index) => {
+  if (tasksInPr.length > 4) {
+    alert('нужно что-то выполнить прежде чем добавлять еще.');
+    return;
+  }
   inProgressWrapper.innerHTML += createLiInProgress(tasks[index], index);
   tasksInPr.push(tasks[index]);
   tasks.splice(index, 1);
   if (tasks.length < 1) {
-    notShowClearAllToDo();
+    notShowClearAll(clearAllListToDo);
   }
+  totalList(totalInPr, tasksInPr);
+  totalList(totalToDo, tasks);
   updateLocal();
   updateLocalInPr();
   fillHtmlListInPr();
@@ -174,8 +202,10 @@ const done = (index) => {
   tasksDone.push(tasksInPr[index]);
   tasksInPr.splice(index, 1);
   if (tasksInPr.length < 1) {
-    notShowClearAllInPr();
+    notShowClearAll(clearAllListInPr);
   }
+  totalList(totalDone, tasksDone);
+  totalList(totalInPr, tasksInPr);
   updateLocalInPr();
   updateLocalDone();
   fillHtmlListInPr();
@@ -188,8 +218,10 @@ const btnReturn = (index) => {
   console.log(tasksDone[index]['title']);
   tasksDone.splice(index, 1);
   if (tasksDone.length < 1) {
-    notShowClearAllDone();
+    notShowClearAll(clearAllListDone);
   }
+  totalList(totalDone, tasksDone);
+  totalList(totalToDo, tasks);
   updateLocal();
   updateLocalDone();
   fillHtmlList();
@@ -199,17 +231,20 @@ const btnReturn = (index) => {
 const delTaskToDo = (index) => {
   tasks.splice(index, 1);
   if (tasks.length < 1) {
-    notShowClearAllToDo();
+    notShowClearAll(clearAllListToDo);
   }
+  totalList(totalToDo, tasks);
   updateLocal();
   fillHtmlList();
 };
 
 const delTaskInPr = (index) => {
-  tasksInPr.splice(index, 1);
   if (tasksInPr.length < 1) {
-    notShowClearAllInPr();
+    notShowClearAll(clearAllListInPr);
   }
+  tasksInPr.splice(index, 1);
+  totalList(totalInPr, tasksInPr);
+  confirm('Уверен в своем действии?'); //при нажатии esc/отмена все равно удаляет
   updateLocalInPr();
   fillHtmlListInPr();
 };
@@ -217,13 +252,63 @@ const delTaskInPr = (index) => {
 const delTaskDone = (index) => {
   tasksDone.splice(index, 1);
   if (tasksDone.length < 1) {
-    notShowClearAllDone();
+    notShowClearAll(clearAllListDone);
   }
+  totalList(totalDone, tasksDone);
   updateLocalDone();
   fillHtmlListDone();
 };
+/*
+editTaskToDo.addEventListener('dblclick', (index) => {
+  return `
+  <form class="list-item-task-form">
+              <input
+                tabindex="1"
+                placeholder="what need to do?"
+                class="list-item-task-form-input"
+                id="inputToDo"
+                type="text"
+                name="nameTask" ${task.title}${index}
+              />
+              <textarea
+                class="list-item-task-form-textArea"
+                name="description"
+                tabindex="2"
+                id="description"
+                cols="30"
+                rows="5"
+                placeholder="description"
+              ></textarea>
+              <input
+                type="date"
+                class="list-item-task-form-data"
+                name="date"
+                tabindex="3"
+                id="date"
+              />
+              <input
+                type="text"
+                tabindex="4"
+                placeholder="user name"
+                class="list-item-task-form-user"
+                id="userTask"
+                name="user name"
+              />
+              <button
+                class="list-item-task-form-btn"
+                id="toDoBtn"
+                tabindex="5"
+                name="ADD"
+              >
+                Add Task
+              </button>
+            </form>
+  `;
+});
+*/
 
 buttonAdd.addEventListener('click', (e) => {
+  showClearAll(clearAllListToDo);
   e.preventDefault();
   if (titleTask.value === '') {
     return;
@@ -240,51 +325,39 @@ buttonAdd.addEventListener('click', (e) => {
   descriptionTask.value = '';
   dateTask.value = '';
   userTask.value = '';
+  totalList(totalToDo, tasks);
   updateLocal();
   fillHtmlList();
 });
 
 clearAllListToDo.addEventListener('click', (e) => {
   tasks = [];
-  notShowClearAllToDo();
+  notShowClearAll(clearAllListToDo);
+  totalList(totalToDo, tasks);
   updateLocal();
   fillHtmlList();
 });
 
 clearAllListInPr.addEventListener('click', (e) => {
   tasksInPr = [];
-  notShowClearAllInPr();
+  notShowClearAll(clearAllListInPr);
+  alert('уверен?');
+  totalList(totalInPr, tasksInPr);
   updateLocalInPr();
   fillHtmlListInPr();
 });
 
 clearAllListDone.addEventListener('click', (e) => {
   tasksDone = [];
-  notShowClearAllDone();
+  notShowClearAll(clearAllListDone);
+  totalList(totalDone, tasksDone);
   updateLocalDone();
   fillHtmlListDone();
 });
 
-function showClearAllToDo() {
-  document.getElementById('clearAllListToDo').style.display = 'block';
+function totalList(nameTotal, nameArr) {
+  return (nameTotal.innerHTML = 'total tasks:    ' + nameArr.length);
 }
-
-function showClearAllInPr() {
-  document.getElementById('clearAllListInPr').style.display = 'block';
-}
-
-function showClearAllDone() {
-  document.getElementById('clearAllListDone').style.display = 'block';
-}
-
-function notShowClearAllToDo() {
-  document.getElementById('clearAllListToDo').style.display = 'none';
-}
-
-function notShowClearAllInPr() {
-  document.getElementById('clearAllListInPr').style.display = 'none';
-}
-
-function notShowClearAllDone() {
-  document.getElementById('clearAllListDone').style.display = 'none';
-}
+totalList(totalToDo, tasks);
+totalList(totalInPr, tasksInPr);
+totalList(totalDone, tasksDone);

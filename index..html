@@ -17,7 +17,7 @@
 
   <body class="body">
     <header class="header">
-      <h1>My ToDo LiSt</h1>
+      <h1>T R E L L O</h1>
     </header>
     <div class="container">
       <main class="list">
@@ -50,14 +50,14 @@
                 tabindex="3"
                 id="date"
               />
-              <input
-                type="text"
+              <select
+                type="file"
                 tabindex="4"
-                placeholder="user name"
                 class="list-item-task-form-user"
                 id="userTask"
-                name="user name"
-              />
+              >
+                <option disabled>User</option>
+              </select>
               <button
                 class="list-item-task-form-btn"
                 id="toDoBtn"
@@ -72,7 +72,7 @@
             clear all list
           </div>
           <div id="todosWrapper" class="list-item-task-add"></div>
-          <div class="list-item-total">total tasks: 0</div>
+          <div id="totalToDo" class="list-item-total"></div>
         </div>
         <div class="list-item">
           <h3 class="list-item-title">In Progress</h3>
@@ -81,7 +81,7 @@
             clear all list
           </div>
           <div id="inProgressWrapper" class="list-item-task-add"></div>
-          <div id="totalCenter" class="list-item-total">total tasks: 0</div>
+          <div id="totalInPr" class="list-item-total"></div>
         </div>
         <div class="list-item">
           <h3 class="list-item-title">Done</h3>
@@ -90,7 +90,7 @@
             clear all list
           </div>
           <div id="doneWrapper" class="list-item-task-add"></div>
-          <div id="totalCenter" class="list-item-total">total tasks: 0</div>
+          <div id="totalDone" class="list-item-total"></div>
         </div>
       </main>
     </div>

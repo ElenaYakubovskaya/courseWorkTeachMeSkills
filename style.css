@@ -3,20 +3,20 @@
   background-size: cover;
 }
 
-.container {
-  max-width: 1400px;
-  background-color: rgba(167, 167, 167, 0.9);
-  margin: 0 auto;
-}
-
-.header {
+.body .header {
   color: white;
   text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
   text-align: center;
   font-size: 35px;
 }
 
-.list {
+.body .container {
+  max-width: 1400px;
+  background-color: rgba(167, 167, 167, 0.9);
+  margin: 0 auto;
+}
+
+.body .container .list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,7 +28,7 @@
           box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }
 
-.list .list-item {
+.body .container .list .list-item {
   width: 100%;
   margin: 0;
   border: 3px solid white;
@@ -39,7 +39,7 @@
   margin: 50px;
 }
 
-.list .list-item .list-item-title {
+.body .container .list .list-item .list-item-title {
   color: #cecdcd;
   text-align: center;
   border: 1px solid rgba(255, 208, 122, 0.952);
@@ -51,7 +51,7 @@
   font-family: 'Bitter', serif;
 }
 
-.list .list-item .list-item-task {
+.body .container .list .list-item .list-item-task {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,14 +60,14 @@
   margin: 8px auto;
 }
 
-.list .list-item .list-item-task .list-item-task-form {
+.body .container .list .list-item .list-item-task .list-item-task-form {
   background-color: rgba(255, 255, 255, 0.8);
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 20px;
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-input {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-input {
   display: block;
   border: 3px solid gray;
   -webkit-box-shadow: 3px #a7a797;
@@ -80,11 +80,11 @@
   text-align: center;
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-input:focus {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-input:focus {
   background-color: rgba(255, 208, 122, 0.852);
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-textArea {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-textArea {
   width: 80%;
   overflow: auto;
   resize: none;
@@ -100,18 +100,18 @@
   font-family: 'Bitter', serif;
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-textArea:focus {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-textArea:focus {
   background-color: rgba(255, 208, 122, 0.852);
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-data {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-data {
   display: block;
   margin: 7px auto;
   border-radius: 7px;
   outline: none;
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-btn {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-btn {
   background-color: gray;
   text-decoration: none;
   border-radius: 7px;
@@ -121,15 +121,15 @@
   cursor: pointer;
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-btn:hover {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-btn:hover {
   background-color: #ededb2;
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-btn:focus {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-btn:focus {
   background-color: rgba(255, 208, 122, 0.852);
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-user {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-user {
   display: block;
   margin: 0 auto;
   margin-bottom: 7px;
@@ -139,18 +139,30 @@
   font-size: 15px;
 }
 
-.list .list-item .list-item-task .list-item-task-form .list-item-task-form-user:focus {
+.body .container .list .list-item .list-item-task .list-item-task-form .list-item-task-form-user:focus {
   background-color: rgba(255, 208, 122, 0.852);
 }
 
-.list .list-item-total {
-  text-align: right;
+.body .container .list .list-item-task-clear {
   color: white;
-  font-family: 'Bitter', serif;
+  text-align: right;
+  text-shadow: 1px 1px 2px black;
+  padding: 3px;
   font-size: 20px;
+  display: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.list-item-task-add-all {
+.body .container .list .list-item-task-clear:hover {
+  text-decoration: underline;
+  padding: 3px;
+  color: red;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.body .container .list .list-item-task-add {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -162,33 +174,54 @@
   margin: 5px auto;
 }
 
-.list-item-task-add-description {
+.body .container .list .list-item-task-add .list-item-task-add-description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 95%;
   list-style-type: none;
   background-color: white;
   list-style-position: inside;
-  margin: 3px auto;
-  text-align: center;
+  margin: 3px 5px;
+  margin-left: 10px;
+  text-align: justify;
   border: 3px double purple;
   border-radius: 1px 5px 1px 5px;
   text-shadow: none;
+  word-wrap: break-word;
 }
 
-.list-item-task-add-buttons {
+.body .container .list .list-item-task-add .list-item-task-add-description .list-item-task-add-all {
+  margin: auto 5px;
+  word-wrap: break-word;
+}
+
+.body .container .list .list-item-task-add .list-item-task-add-description .list-item-task-add-all .list-item-task-add-all-span {
+  margin: auto 5px;
+}
+
+.body .container .list .list-item-task-add .list-item-task-add-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  text-align: center;
+}
+
+.body .container .list .list-item-total {
+  text-align: right;
+  color: white;
+  font-family: 'Bitter', serif;
+  font-size: 20px;
 }
 
 #btn-inPr,
@@ -216,20 +249,12 @@
   cursor: pointer;
 }
 
-.list-item-task-clear {
-  text-align: right;
-  text-shadow: none;
-  padding: 3px;
-  font-size: 18px;
-  display: none;
+#strong {
+  display: block;
+  text-align: center;
 }
 
-.list-item-task-clear:hover {
-  text-decoration: underline;
-  padding: 3px;
-  color: red;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  cursor: pointer;
+#data-user {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

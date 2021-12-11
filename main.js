@@ -14,6 +14,22 @@ const totalToDo = document.getElementById('totalToDo');
 const totalInPr = document.getElementById('totalInPr');
 const totalDone = document.getElementById('totalDone');
 
+const userName = [];
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then((response) => response.json())
+  .then((json) => {
+    for (let i = 0; i < json.length; i++) {
+      userName.push(json[i]['name']);
+    }
+    userName.forEach((el) => {
+      userTask.innerHTML += `<option >${el}</option>`;
+      console.log(el);
+    });
+  });
+
+console.log(userTask);
+
 let tasksDone = !localStorage.tasksDone
   ? []
   : JSON.parse(localStorage.getItem('tasksDone'));
@@ -41,14 +57,15 @@ function notShowClearAll(list) {
 }
 
 const createLi = (task, index) => {
+  console.log('createLi');
   showClearAll(clearAllListToDo);
   return `
   <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
       <span class="list-item-task-add-all-span" >
         <strong id="strong">${task.title}</strong>
-          ${task.description}
-         <span id="data-user">${task.date}${task.user}</span>
+          ${task.description}<br>
+         <span id="data-user">${task.date}<br>${task.user}</span>
       </span>
     </div>
   <div class="list-item-task-add-buttons">
@@ -70,11 +87,13 @@ const createLiInProgress = (task, index) => {
   return `
   <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
-      <span class="list-item-task-add-all-span" >
-        <strong id="strong">${task.title}</strong>
-          ${task.description}
-         <span id="data-user">${task.date}${task.user}</span>
-      </span>
+    <span class="list-item-task-add-all-span" >
+    <strong id="strong">${task.title}</strong>
+      ${task.description || 'тo description'}<br>
+     <span id="data-user">${task.date || 'date not set'}<br>${
+    task.user || 'no assigned'
+  }</span>
+  </span>
     </div>
   <div class="list-item-task-add-buttons">
     <button onclick ="done(${index})" class="list-item-task-add-buttons-inPR"
@@ -94,11 +113,13 @@ const createLiDone = (task, index) => {
   return `
   <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
-      <span class="list-item-task-add-all-span" >
-        <strong id="strong">${task.title}</strong>
-          ${task.description}
-         <span id="data-user">${task.date}${task.user}</span>
-      </span>
+    <span class="list-item-task-add-all-span" >
+    <strong id="strong">${task.title}</strong>
+      ${task.description || 'тo description'}<br>
+     <span id="data-user">${task.date || 'date not set'}<br>${
+    task.user || 'no assigned'
+  }</span>
+  </span>
     </div>
   <div class="list-item-task-add-buttons">
   <div class="list-item-task-add-buttons">
@@ -115,12 +136,13 @@ const createLiDone = (task, index) => {
 };
 
 const createLiReturn = (task, index) => {
+  console.log('createLiReturn');
   return `
   <div class="list-item-task-add-description">
     <div class="list-item-task-add-all">
-      <span class="list-item-task-add-all-span" >
-        <strong id="strong">${task.title}</strong>
-      </span>
+    <span class="list-item-task-add-all-span" >
+    <strong id="strong">${task.title}</strong>
+  </span>
     </div>
   <div class="list-item-task-add-buttons">
   <div class="list-item-task-add-buttons">
@@ -129,7 +151,7 @@ const createLiReturn = (task, index) => {
     >in PR</button>
     <button onclick ="delTaskToDo(${index})"
       class="list-item-task-add-buttons-delete"
-      id="btn-deleteToDo" >x
+      id="btn-delToDo" >x
       </button>
   </div>
   </div>
@@ -138,6 +160,7 @@ const createLiReturn = (task, index) => {
 
 const fillHtmlList = () => {
   todosWrapper.innerHTML = '';
+  console.log(tasks);
   if (tasks.length > 0) {
     tasks.forEach((item, index) => {
       todosWrapper.innerHTML += createLi(item, index);
@@ -165,6 +188,17 @@ const fillHtmlListDone = () => {
   }
 };
 fillHtmlListDone();
+
+const fillHtmlListReturn = () => {
+  todosWrapper.innerHTML = '';
+  console.log(tasks);
+  if (tasks.length > 0) {
+    tasks.forEach((item, index) => {
+      todosWrapper.innerHTML += createLiReturn(item, index);
+    });
+  }
+};
+fillHtmlListReturn();
 
 const updateLocal = () => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -214,7 +248,7 @@ const done = (index) => {
 
 const btnReturn = (index) => {
   todosWrapper.innerHTML += createLiReturn(tasksDone[index]['title'], index);
-  tasks.push(tasksDone[index]['title']);
+  tasks.push({ title: tasksDone[index]['title'] });
   console.log(tasksDone[index]['title']);
   tasksDone.splice(index, 1);
   if (tasksDone.length < 1) {
@@ -222,9 +256,10 @@ const btnReturn = (index) => {
   }
   totalList(totalDone, tasksDone);
   totalList(totalToDo, tasks);
+  showClearAll(clearAllListToDo);
   updateLocal();
   updateLocalDone();
-  fillHtmlList();
+  fillHtmlListReturn();
   fillHtmlListDone();
 };
 

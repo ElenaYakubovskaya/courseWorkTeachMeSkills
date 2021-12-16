@@ -1,21 +1,3 @@
-/*
-const titleTaskElement = document.getElementById('inputToDo');
-const descriptionTaskElement = document.getElementById('description');
-const dateTaskElement = document.getElementById('date');
-const userTaskElement = document.getElementById('userTask');
-const buttonAddElement = document.getElementById('toDoBtn');
-const todosWrapperElement = document.getElementById('todosWrapper');
-const inProgressWrapperElement = document.getElementById('inProgressWrapper');
-const doneWrapperElement = document.getElementById('doneWrapper');
-const clearAllListToDoElement = document.getElementById('clearAllListToDo');
-const clearAllListInPrElement = document.getElementById('clearAllListInPr');
-const clearAllListDoneElement = document.getElementById('clearAllListDone');
-const totalToDoElement = document.getElementById('totalToDo');
-const totalInPrElement = document.getElementById('totalInPr');
-const totalDoneElement = document.getElementById('totalDone');
-
-const userName = [];*/
-
 import {
   titleTaskElement,
   descriptionTaskElement,
@@ -66,18 +48,18 @@ function hideshowElement(list) {
 const createLi = (task, index) => {
   return `
   <div id="toDo-${index}" class="list-item-task-add-description">
-  <div class ="list-item-task-add-style" >
-    <button class="list-item-task-add-description-edit" id="btn-edit" onclick="createEditForm(${index})">Edit</button>
+    <div class ="list-item-task-add-style" >
+      <button class="list-item-task-add-description-edit" id="btn-edit" onclick="createEditForm(${index})">Edit</button>
     <div class="list-item-task-add-all">
       <span class="list-item-task-add-all-span" >
-      <strong class="list-item-task-add-all-span-text" id="strong">${
-        task.title
-      }</strong>
+        <strong class="list-item-task-add-all-span-text" id="strong">${
+          task.title
+        }</strong>
       ${task.description || 'no description'}<br>
-     <span id="data-user">${task.date || 'date not set'}<br>${
+        <span id="data-user">${task.date || 'date not set'}<br>${
     task.user || 'no assigned'
-  }</span>
-  </span>
+  }   </span>
+    </span>
     </div>
   <div class="list-item-task-add-buttons">
   <div class="list-item-task-add-buttons">
@@ -217,9 +199,6 @@ function editFormTemplate(title, date, user) {
               >
                 <option selected disabled>${user}</option>
               </select>
-
-              
-
               <button 
                 class="list-item-task-form-btn"
                 id="save"
@@ -234,32 +213,31 @@ function editFormTemplate(title, date, user) {
 
 createEditForm = (index) => {
   const listTask = document.getElementById(`toDo-${index}`);
-
   const div = listTask.getElementsByClassName('list-item-task-add-style')[0];
   div.style.display = 'none';
+
   const title = tasks[index]['title'];
   const description = tasks[index]['description'];
-
   const date = tasks[index]['date'];
   const user = tasks[index]['user'];
+
   const form = editFormTemplate(title, date, user);
+
   if (document.getElementsByClassName('list-item-task-form').length > 1) {
-    div.style.display = 'block';
+    div.style.display = 'flex';
     return;
   }
   listTask.innerHTML += form;
-  const save = document.getElementById('save');
 
+  const save = document.getElementById('save');
   const titleEdit = document.getElementById('inputEdit');
   titleEdit.value = title;
   const descriptionEdit = document.getElementById('descriptionEdit');
-
   descriptionEdit.value = description || 'no description';
   const dateEdit = document.getElementById('dateEdit');
   dateEdit.value = date;
   const userTaskEdit = document.getElementById('userTaskEdit');
   userTaskEdit.value = user;
-  console.log(user);
 
   userName.forEach((el) => {
     userTaskEdit.innerHTML += `<option >${el}</option>`;
@@ -290,7 +268,6 @@ fillHtmlList();
 
 const fillHtmlListInPr = () => {
   inProgressWrapperElement.innerHTML = '';
-
   if (tasksInPr.length > 0) {
     showElement(clearAllListInPrElement);
     tasksInPr.forEach((item, index) => {
@@ -313,7 +290,6 @@ fillHtmlListDone();
 
 const fillHtmlListReturn = () => {
   todosWrapperElement.innerHTML = '';
-
   if (tasks.length > 0) {
     tasks.forEach((item, index) => {
       todosWrapperElement.innerHTML += createLiReturn(item, index);
@@ -353,9 +329,6 @@ inProgressTask = (index) => {
   fillHtmlListInPr();
   fillHtmlList();
 };
-totalList(totalDoneElement, tasksDone);
-totalList(totalInPrElement, tasksInPr);
-totalList(totalToDoElement, tasks);
 
 done = (index) => {
   doneWrapperElement.innerHTML += createLiDone(tasksInPr[index], index);
@@ -384,6 +357,7 @@ btnReturn = (index) => {
   if (tasksDone.length < 1) {
     hideshowElement(clearAllListDoneElement);
   }
+
   totalList(totalDoneElement, tasksDone);
   totalList(totalToDoElement, tasks);
   showElement(clearAllListToDoElement);
@@ -478,3 +452,6 @@ clearAllListDoneElement.addEventListener('click', (e) => {
 function totalList(nameTotal, nameArr) {
   return (nameTotal.innerHTML = 'total tasks:    ' + nameArr.length);
 }
+totalList(totalDoneElement, tasksDone);
+totalList(totalInPrElement, tasksInPr);
+totalList(totalToDoElement, tasks);

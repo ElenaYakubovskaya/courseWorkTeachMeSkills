@@ -459,23 +459,7 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"iJDgK":[function(require,module,exports) {
-/*
-const titleTaskElement = document.getElementById('inputToDo');
-const descriptionTaskElement = document.getElementById('description');
-const dateTaskElement = document.getElementById('date');
-const userTaskElement = document.getElementById('userTask');
-const buttonAddElement = document.getElementById('toDoBtn');
-const todosWrapperElement = document.getElementById('todosWrapper');
-const inProgressWrapperElement = document.getElementById('inProgressWrapper');
-const doneWrapperElement = document.getElementById('doneWrapper');
-const clearAllListToDoElement = document.getElementById('clearAllListToDo');
-const clearAllListInPrElement = document.getElementById('clearAllListInPr');
-const clearAllListDoneElement = document.getElementById('clearAllListDone');
-const totalToDoElement = document.getElementById('totalToDo');
-const totalInPrElement = document.getElementById('totalInPr');
-const totalDoneElement = document.getElementById('totalDone');
-
-const userName = [];*/ var _const = require("./modules/const");
+var _const = require("./modules/const");
 var _data = require("./modules/data");
 _data.fetchData();
 let tasksDone = !localStorage.getItem('tasksDone') ? [] : JSON.parse(localStorage.getItem('tasksDone'));
@@ -496,14 +480,14 @@ function hideshowElement(list) {
 const createLi = (task, index)=>{
     return `
   <div id="toDo-${index}" class="list-item-task-add-description">
-  <div class ="list-item-task-add-style" >
-    <button class="list-item-task-add-description-edit" id="btn-edit" onclick="createEditForm(${index})">Edit</button>
+    <div class ="list-item-task-add-style" >
+      <button class="list-item-task-add-description-edit" id="btn-edit" onclick="createEditForm(${index})">Edit</button>
     <div class="list-item-task-add-all">
       <span class="list-item-task-add-all-span" >
-      <strong class="list-item-task-add-all-span-text" id="strong">${task.title}</strong>
+        <strong class="list-item-task-add-all-span-text" id="strong">${task.title}</strong>
       ${task.description || 'no description'}<br>
-     <span id="data-user">${task.date || 'date not set'}<br>${task.user || 'no assigned'}</span>
-  </span>
+        <span id="data-user">${task.date || 'date not set'}<br>${task.user || 'no assigned'}   </span>
+    </span>
     </div>
   <div class="list-item-task-add-buttons">
   <div class="list-item-task-add-buttons">
@@ -627,9 +611,6 @@ function editFormTemplate(title, date, user) {
               >
                 <option selected disabled>${user}</option>
               </select>
-
-              
-
               <button 
                 class="list-item-task-form-btn"
                 id="save"
@@ -651,7 +632,7 @@ createEditForm = (index)=>{
     const user = tasks[index]['user'];
     const form = editFormTemplate(title, date, user);
     if (document.getElementsByClassName('list-item-task-form').length > 1) {
-        div.style.display = 'block';
+        div.style.display = 'flex';
         return;
     }
     listTask.innerHTML += form;
@@ -664,7 +645,6 @@ createEditForm = (index)=>{
     dateEdit.value = date;
     const userTaskEdit = document.getElementById('userTaskEdit');
     userTaskEdit.value = user;
-    console.log(user);
     _const.userName.forEach((el)=>{
         userTaskEdit.innerHTML += `<option >${el}</option>`;
     });
@@ -741,9 +721,6 @@ inProgressTask = (index)=>{
     fillHtmlListInPr();
     fillHtmlList();
 };
-totalList(_const.totalDoneElement, tasksDone);
-totalList(_const.totalInPrElement, tasksInPr);
-totalList(_const.totalToDoElement, tasks);
 done = (index)=>{
     _const.doneWrapperElement.innerHTML += createLiDone(tasksInPr[index], index);
     tasksDone.push(tasksInPr[index]);
@@ -834,6 +811,9 @@ _const.clearAllListDoneElement.addEventListener('click', (e)=>{
 function totalList(nameTotal, nameArr) {
     return nameTotal.innerHTML = 'total tasks:    ' + nameArr.length;
 }
+totalList(_const.totalDoneElement, tasksDone);
+totalList(_const.totalInPrElement, tasksInPr);
+totalList(_const.totalToDoElement, tasks);
 
 },{"./modules/const":"ez67k","./modules/data":"3vfKC"}],"ez67k":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -930,6 +910,6 @@ function fetchData() {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./const":"ez67k"}]},["cgLB2","iJDgK"], "iJDgK", "parcelRequirea15b")
+},{"./const":"ez67k","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["cgLB2","iJDgK"], "iJDgK", "parcelRequirea15b")
 
 //# sourceMappingURL=index.8eb82e9b.js.map

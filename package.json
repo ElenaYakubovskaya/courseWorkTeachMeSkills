@@ -1,0 +1,24 @@
+{
+  "name": "courseworkteachmeskills",
+  "version": "1.0.0",
+  "description": "\\*\\*//Техническое задание\r Данное приложение - сервис-планнер ведение записи повседневных дел.\r Пользователям предоставляется возможность создавать задания в разделt \"TO Do\", менять состояния таска в \"In Progress\" \"Done\"",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElenaYakubovskaya/courseWorkTeachMeSkills.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElenaYakubovskaya/courseWorkTeachMeSkills/issues"
+  },
+  "homepage": "https://github.com/ElenaYakubovskaya/courseWorkTeachMeSkills#readme",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
+}

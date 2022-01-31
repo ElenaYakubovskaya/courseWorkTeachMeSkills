@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C l o n e T R E L L O</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:wght@100;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body id="body" class="body">
+    <header class="header">
+      <h1>T R E L L O</h1>
+    </header>
+    <div class="container">
+      <main class="list">
+        <div class="list-item">
+          <h3 class="list-item-title">To Do</h3>
+          <div class="list-item-task">
+            <form class="list-item-task-form">
+              <input
+                tabindex="1"
+                placeholder="what need to do?"
+                class="list-item-task-form-input"
+                id="inputToDo"
+                type="text"
+                name="nameTask"
+              />
+              <textarea
+                class="list-item-task-form-textArea"
+                name="description"
+                tabindex="2"
+                id="description"
+                cols="30"
+                rows="5"
+                placeholder="description"
+              ></textarea>
+              <input
+                type="date"
+                class="list-item-task-form-data"
+                name="date"
+                tabindex="3"
+                id="date"
+              />
+              <select
+                type="file"
+                tabindex="4"
+                class="list-item-task-form-user"
+                id="userTask"
+              >
+                <option selected disabled>no assigned</option>
+              </select>
+              <button
+                class="list-item-task-form-btn"
+                id="toDoBtn"
+                tabindex="5"
+                name="ADD"
+              >
+                Add Task
+              </button>
+            </form>
+          </div>
+          <div id="clearAllListToDo" class="list-item-task-clear">
+            clear all list
+          </div>
+          <div id="todosWrapper" class="list-item-task-add"></div>
+          <div id="totalToDo" class="list-item-total"></div>
+        </div>
+        <div class="list-item">
+          <h3 class="list-item-title">In Progress</h3>
+          <div class="list-item-task"></div>
+          <div id="clearAllListInPr" class="list-item-task-clear">
+            clear all list
+          </div>
+          <div id="inProgressWrapper" class="list-item-task-add"></div>
+          <div id="totalInPr" class="list-item-total"></div>
+        </div>
+        <div class="list-item">
+          <h3 class="list-item-title">Done</h3>
+          <div class="list-item-task"></div>
+          <div id="clearAllListDone" class="list-item-task-clear">
+            clear all list
+          </div>
+          <div id="doneWrapper" class="list-item-task-add"></div>
+          <div id="totalDone" class="list-item-total"></div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
